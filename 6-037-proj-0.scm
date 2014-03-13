@@ -30,11 +30,6 @@
          (bitfunc-integral-recur (- num-steps 1) (+ x1 (/ (- x2 x1) num-steps)) x2)
       )))
 
-;; Test cases:
-(bitfunc-integral-recur 3 1 4)
-
-;;(define (bitfunc-integral-iter num-steps x1 x2)
-;;    'your-code-here)
 (define (bitfunc-integral-iter num-steps x1 x2) (helper 0 1 num-steps (/ (- x2 x1) num-steps) x1))
 
 (define (helper area step done w x1)
@@ -42,5 +37,8 @@
     area
     (helper (+ area (* w (bitfunc x1))) (+ step 1) done w (+ w x1))
     ))
+
+;; Test cases:
+(bitfunc-integral-recur 3 1 4)
 (bitfunc-integral-iter 3 1 4)
 
