@@ -12,6 +12,8 @@
 
 (bitfunc 1.5)
 
+;;Problem 2: A rectangle under Bitdiddle's function
+
 (define (bitfunc-rect x1 x2)
   (* (bitfunc x1) (- x2 x1)))
 
@@ -20,3 +22,16 @@
 (bitfunc-rect 0 0.5) ;; Should be 2
 (bitfunc-rect 1.5 2) ;; Should be negative
 
+;; Problem 3: Integrating Bitdiddle's function
+(define (bitfunc-integral-recur num-steps x1 x2)
+    (if (= num-steps 1)
+      (bitfunc-rect x1 x2)
+      (+ (* (bitfunc x1) (/ (- x2 x1) num-steps)) 
+         (bitfunc-integral-recur (- num-steps 1) (+ x1 (/ (- x2 x1) num-steps)) x2)
+      )))
+
+;; Test cases:
+(bitfunc-integral-recur 3 1 4)
+
+;;(define (bitfunc-integral-iter num-steps x1 x2)
+;;    'your-code-here)
