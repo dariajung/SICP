@@ -38,7 +38,18 @@
     (helper (+ area (* w (bitfunc x1))) (+ step 1) done w (+ w x1))
     ))
 
+;; Problem 4: Comparing the two integrators
+
+(define (bitfunc-integral-difference num-steps x1 x2)
+    (abs ( - (bitfunc-integral-recur num-steps x1 x2) (bitfunc-integral-iter num-steps x1 x2))))
+
 ;; Test cases:
-(bitfunc-integral-recur 3 1 4)
-(bitfunc-integral-iter 3 1 4)
+(bitfunc-integral-recur 3 1 4.0)
+(bitfunc-integral-iter 3 1 4.0)
+(bitfunc-integral-recur 3 9.5 40.0)
+(bitfunc-integral-iter 3 9.5 40.0)
+(bitfunc-integral-recur 10 1 20.0)
+(bitfunc-integral-iter 10 1 20.0)
+(bitfunc-integral-difference 10 1 20.0)
+
 
