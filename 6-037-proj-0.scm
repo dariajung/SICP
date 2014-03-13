@@ -10,3 +10,13 @@
 (bitfunc -1) ;; Should be 10
 (bitfunc 10) ;; Should be pretty big, and positive, 10504
 
+(bitfunc 1.5)
+
+(define (bitfunc-rect x1 x2)
+  (* (bitfunc x1) (- x2 x1)))
+
+;; Test cases:
+(bitfunc-rect 0 1)   ;; Should be 4
+(bitfunc-rect 0 0.5) ;; Should be 2
+(bitfunc-rect 1.5 2) ;; Should be negative
+
